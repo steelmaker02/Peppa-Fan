@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wutz-Welt — Fan-Seite</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+
+        <header class="site-header">
+            <div class="header-content">
+                <!-- Logo -->
+                <div class="logo-container" onclick="showPage('home')">
+                    <img src="assets/images/logo.png" alt="Wutz Logo" class="site-logo">
+                </div>
+
+                <!-- Burger-Menü -->
+                <button class="burger-menu" id="burgerBtn" aria-label="Menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="navigation" id="mainNav">
+                <button class="nav-btn active" onclick="showPage('home')">
+                    <img src="assets/icons/home.png" class="btn-icon" alt=""> Start
+                </button>
+                <button class="nav-btn" onclick="showPage('characters')">
+                    <img src="assets/icons/pig_face.png" class="btn-icon" alt=""> Freunde
+                </button>
+                <button class="nav-btn" onclick="showPage('games')">
+                    <img src="assets/icons/gamepad.png" class="btn-icon" alt=""> Spielen
+                </button>
+                <button class="nav-btn" onclick="showPage('painting')">
+                    <img src="assets/icons/palette.png" class="btn-icon" alt=""> Malen
+                </button>
+                <button class="nav-btn" onclick="showPage('links')">
+                    <img src="assets/icons/link.png" class="btn-icon" alt=""> Links
+                </button>
+                <button class="nav-btn parent-btn" onclick="showPage('parents')">
+                    <img src="assets/icons/info.png" class="btn-icon" alt=""> Eltern
+                </button>
+            </nav>
+        </header>
+
+        <main id="content-area">
+
+            <!-- Startseite -->
+            <section id="home" class="page active">
+                <div class="hero-box">
+                    <h2>Hallo! Willkommen in der Wutz-Welt! <img src="assets/icons/wave.png" class="icon-inline" alt="">
+                    </h2>
+                    <p>Hier kannst du spielen, malen und deine Freunde treffen.</p>
+                    <div class="hero-buttons">
+                        <button class="cta-btn big-pink" onclick="showPage('characters')">Freunde ansehen</button>
+                        <button class="cta-btn big-blue" onclick="showPage('games')">Jetzt spielen</button>
+                    </div>
+                </div>
+
+                <div class="magic-image-wrapper" onclick="toggleFamilyImage()">
+                    <img id="family-img" src="assets/images/family.png" alt="Familie Wutz" class="home-family-img">
+                    <p class="click-hint">
+                        <img src="assets/icons/sparkles.png" class="icon-inline icon-small" alt="">
+                        Klick auf das Bild für Magie!
+                        <img src="assets/icons/sparkles.png" class="icon-inline icon-small" alt="">
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Wusstest du schon?</h3>
+                    <p><span class="highlight-pink">Papa Wutz</span> ist der Weltmeister im Pfützen-Springen!
+                        (Aber pssst, sag es niemandem!)</p>
+                </div>
+            </section>
+
+            <!-- Freunde -->
+            <section id="characters" class="page hidden">
+                <h2>Meine Freunde & Familie</h2>
+                <p>Klicke auf ein Bild, um mehr zu erfahren!</p>
+                <div class="char-grid" id="char-grid-container"></div>
+
+                <!-- Slider -->
+                <div class="slider-wrapper">
+                    <h3>Bildergalerie</h3>
+                    <div class="slider-container">
+                        <!-- Linke Taste -->
+                        <button class="slider-btn prev" onclick="slideInfinite(-1)">&#10094;</button>
+
+                        <div class="slider-track" id="photoSlider">
+                            <img src="assets/images/foto_1.jpg" alt="Foto 1">
+                            <img src="assets/images/foto_2.jpg" alt="Foto 2">
+                            <img src="assets/images/foto_3.jpg" alt="Foto 3">
+                            <img src="assets/images/foto_4.jpg" alt="Foto 4">
+                            <img src="assets/images/foto_5.jpg" alt="Foto 5">
+                            <img src="assets/images/foto_6.jpg" alt="Foto 6">
+                            <img src="assets/images/foto_7.jpg" alt="Foto 7">
+                            <img src="assets/images/foto_8.jpg" alt="Foto 8">
+                            <img src="assets/images/foto_9.jpg" alt="Foto 9">
+                        </div>
+
+                        <!-- Rechte Taste -->
+                        <button class="slider-btn next" onclick="slideInfinite(1)">&#10095;</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Detailansicht für einen Charakter -->
+            <section id="char-detail" class="page hidden">
+                <button class="back-button" onclick="showPage('characters')">⬅ Zurück zur Übersicht</button>
+
+                <div class="detail-card">
+                    <div class="detail-top">
+                        <img id="detail-img" src="assets/images/logo.png" alt="Character" class="detail-image">
+                        <!-- Für Validator -->
+                        <div class="detail-info">
+                            <h2 id="detail-name">Name</h2>
+                            <span class="species-tag" id="detail-species">Tierart</span>
+                        </div>
+                    </div>
+                    <div class="detail-content">
+                        <p id="detail-desc">Beschreibung...</p>
+                        <div class="likes-box">
+                            <strong><img src="assets/icons/heart.png" class="icon-inline" alt=""> Das mag ich:</strong>
+                            <p id="detail-likes">...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <video src="assets/images/footer_characters.mp4" class="section-footer-media" autoplay loop muted
+                    playsinline></video>
+            </section>
+
+            <!-- Memory Spiel -->
+            <section id="games" class="page hidden">
+                <h2>Memory Spiel</h2>
+                <p>Finde die gleichen Paare!</p>
+                <div class="game-board-wrapper">
+                    <div class="game-board" id="memory-board"></div>
+                </div>
+                <div id="game-msg" class="game-message"></div>
+                <button class="cta-btn big-blue" onclick="initMemoryGame()">
+                    <img src="assets/icons/restart.png" class="icon-action" alt=""> Neues Spiel starten
+                </button>
+
+                <video src="assets/images/footer_game.mp4" class="section-footer-media" autoplay loop muted
+                    playsinline></video>
+            </section>
+
+            <!-- Malbereich -->
+            <section id="painting" class="page hidden">
+                <h2>Malen macht Spaß!</h2>
+                <div class="canvas-container">
+                    <canvas id="drawingCanvas" width="600" height="400"></canvas>
+                    <div class="paint-tools">
+                        <div class="colors-row">
+                            <button class="color-btn" style="background:#ffb7b2;"
+                                onclick="changeColor('#ffb7b2')"></button>
+                            <button class="color-btn" style="background:#42a5f5;"
+                                onclick="changeColor('#42a5f5')"></button>
+                            <button class="color-btn" style="background:#66bb6a;"
+                                onclick="changeColor('#66bb6a')"></button>
+                            <button class="color-btn" style="background:#ffd54f;"
+                                onclick="changeColor('#ffd54f')"></button>
+                            <button class="color-btn" style="background:#000000;"
+                                onclick="changeColor('#000000')"></button>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="cta-btn small pink-btn" onclick="clearCanvas()">
+                                <img src="assets/icons/trash.png" class="icon-action" alt=""> Löschen
+                            </button>
+                            <button class="cta-btn small blue-btn" onclick="downloadDrawing()">
+                                <img src="assets/icons/save.png" class="icon-action" alt=""> Speichern
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <video src="assets/images/footer_paint.mp4" class="section-footer-media" autoplay loop muted
+                    playsinline></video>
+            </section>
+
+            <!-- Links -->
+            <section id="links" class="page hidden">
+                <h2>Coole Links und Videos</h2>
+                <p>Hier kannst du Peppa sicher im Internet besuchen:</p>
+
+                <div class="links-container">
+                    <a href="https://www.youtube.com/channel/UCAOtE1V7Ots4DjM8JLlrYgg" target="_blank"
+                        class="link-card">
+                        <div class="link-icon">
+                            <img src="assets/icons/youtube.png" class="link-img" alt="YouTube">
+                        </div>
+                        <div class="link-info">
+                            <h3>Peppa Pig Deutsch</h3>
+                            <p>Der offizielle YouTube Kanal</p>
+                        </div>
+                    </a>
+
+                    <a href="https://www.peppapig.com/de-de" target="_blank" class="link-card">
+                        <div class="link-icon">
+                            <img src="assets/icons/web.png" class="link-img" alt="Web">
+                        </div>
+                        <div class="link-info">
+                            <h3>Offizielle Webseite</h3>
+                            <p>Spiele und Infos von Peppa</p>
+                        </div>
+                    </a>
+
+                    <a href="https://www.instagram.com/officialpeppa/" target="_blank" class="link-card">
+                        <div class="link-icon">
+                            <img src="assets/icons/instagram.png" class="link-img" alt="Instagram">
+                        </div>
+                        <div class="link-info">
+                            <h3>Peppa auf Instagram</h3>
+                            <p>Fotos und Neuigkeiten</p>
+                        </div>
+                    </a>
+                </div>
+
+                <video src="assets/images/footer_loop.mp4" class="section-footer-media" autoplay loop muted
+                    playsinline></video>
+            </section>
+
+            <!-- Impressum und Datenschutz (Text geschrieben von KI) -->
+            <section id="parents" class="page hidden">
+                <div class="legal-box">
+                    <h2><img src="assets/icons/info.png" class="icon-inline" alt=""> Impressum & Datenschutz</h2>
+
+                    <div class="legal-tabs">
+                        <button class="tab-btn active" onclick="showLegal('impressum')">Impressum</button>
+                        <button class="tab-btn" onclick="showLegal('privacy')">Datenschutz</button>
+                    </div>
+
+                    <div id="legal-impressum" class="legal-content">
+                        <h3>Impressum</h3>
+                        <p class="legal-hint">
+                            <em>Hinweis: Dies ist ein fiktives Projekt im Rahmen einer schulischen Ausbildung /
+                                Prüfungsvorbereitung.</em>
+                        </p>
+
+                        <h4>Angaben gemäß § 5 TMG</h4>
+                        <p>
+                            <strong>Betreiber der Seite:</strong><br>
+                            <span class="highlight-pink">Dmytro Zaiats</span> <br>
+                            Musterstraße 1 <br>
+                            12345 Musterstadt<br>
+                            Deutschland
+                        </p>
+
+                        <h4>Kontakt</h4>
+                        <p>E-Mail: muster@email.de</p>
+
+                        <hr class="legal-divider">
+
+                        <h4>Urheberrecht & Bildnachweis (Copyright)</h4>
+                        <p class="small-text">
+                            <strong>Keine Urheberrechtsverletzung beabsichtigt.</strong><br>
+                            Diese Webseite ist eine inoffizielle Fan-Seite und steht in keinerlei Verbindung zu
+                            <strong>Hasbro, Entertainment One (eOne)</strong> oder <strong>Astley Baker Davies
+                                Ltd</strong>.
+                        </p>
+                        <p class="small-text">
+                            Die verwendeten Bilder, Videos und Grafiken von "Peppa Pig" wurden aus öffentlich
+                            zugänglichen Quellen im Internet entnommen und dienen ausschließlich
+                            <strong>nicht-kommerziellen,
+                                bildungsbezogenen Zwecken</strong> (Demonstration von Web-Entwicklungs-Fähigkeiten).
+                        </p>
+                        <p class="small-text">
+                            Sollten Sie der Rechteinhaber sein und eine Entfernung wünschen, kontaktieren Sie uns bitte.
+                            Die Inhalte werden dann umgehend entfernt.
+                        </p>
+                        <p class="small-text legal-note">
+                            <strong>Icons:</strong> Verwendete Icons stammen von Flaticon.com.<br>
+                            <strong>Schriftarten:</strong> "Fredoka" und "Nunito" via Google Fonts (lokal eingebunden).
+                        </p>
+                    </div>
+
+                    <div id="legal-privacy" class="legal-content hidden">
+                        <h3>Datenschutzerklärung</h3>
+
+                        <h4>1. Grundlegendes</h4>
+                        <p>Diese Datenschutzerklärung klärt Sie über die Art, den Umfang und Zweck der Verarbeitung von
+                            personenbezogenen Daten auf dieser Website auf. Da sich diese Seite speziell an Kinder
+                            richtet,
+                            erheben wir bewusst <strong>keine</strong> persönlichen Daten.</p>
+
+                        <h4>2. Keine Tracking-Cookies & keine Analyse-Tools</h4>
+                        <p>Wir verwenden keine Analyse-Tools (wie Google Analytics) und keine Werbe-Tracker. Es werden
+                            keine Daten an Dritte weitergegeben.</p>
+
+                        <h4>3. Lokale Speicherung (Local Storage)</h4>
+                        <p>Damit das Spiel (Memory) funktioniert, speichern wir den Spielstand lokal auf Ihrem Gerät (im
+                            Browser). Das sind reine Technik-Daten (z.B. "Spiel gewonnen"). Diese Daten verlassen Ihr
+                            Gerät nicht.</p>
+
+                        <h4>4. Eingebundene Inhalte (Videos)</h4>
+                        <p>Diese Webseite bindet Videos lokal ein. Es werden keine Daten an YouTube oder Vimeo
+                            übertragen, solange Sie nicht auf externe Links klicken.</p>
+
+                        <h4>5. Externe Links</h4>
+                        <p>Unsere Webseite enthält Links zu externen Webseiten (z.B. YouTube, Instagram). Wir haben
+                            keinen Einfluss darauf, dass deren Betreiber die Datenschutzbestimmungen einhalten.</p>
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+<!-- Footer  -->
+        <footer class="site-footer">
+            <div class="footer-icons">
+                <a href="https://www.youtube.com/channel/UCAOtE1V7Ots4DjM8JLlrYgg" target="_blank" title="YouTube">
+                    <img src="assets/icons/youtube.png" alt="YouTube">
+                </a>
+                <a href="https://www.peppapig.com/de-de" target="_blank" title="Webseite">
+                    <img src="assets/icons/web.png" alt="Web">
+                </a>
+                <a href="https://www.instagram.com/officialpeppa/" target="_blank" title="Instagram">
+                    <img src="assets/icons/instagram.png" alt="Instagram">
+                </a>
+            </div>
+
+            <p>Inoffizielle Wutz-Welt — Fan-Seite (2026)</p>
+            <div class="footer-links">
+                <a href="javascript:void(0)" onclick="showPage('parents')">Rechtliches</a>
+            </div>
+        </footer>
+
+    </div>
+
+    <div id="confetti-container"></div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>

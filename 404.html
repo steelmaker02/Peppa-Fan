@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seite nicht gefunden</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .site-header {
+            display: flex !important;
+            justify-content: center !important;
+            padding: 10px !important;
+        }
+
+        .error-container {
+            text-align: center;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .error-code {
+            font-size: 6rem;
+            color: var(--primary-pink);
+            font-family: var(--font-heading);
+            margin: 0;
+            line-height: 1;
+        }
+
+        .error-text {
+            font-size: 1.3rem;
+            color: var(--text-color);
+            max-width: 500px;
+            margin: 0;
+        }
+
+        .error-img {
+            width: 200px;
+            height: auto;
+            margin: 5px 0;
+        }
+
+        .error-container h2 {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body class="bg-home">
+
+    <div class="main-wrapper">
+
+        <header class="site-header">
+            <div class="logo-container">
+                <img src="assets/images/logo.png" alt="Wutz Logo" class="site-logo">
+            </div>
+        </header>
+
+        <main id="content-area">
+            <div class="error-container">
+
+                <h1 class="error-code">404</h1>
+
+                <img src="assets/images/error.png" alt="Verwirrte Peppa" class="error-img">
+
+                <h2>Oh nein! Eine Matschepfütze!</h2>
+
+                <p class="error-text">
+                    Diese Seite hat sich im Schlamm versteckt oder existiert nicht mehr.
+                    Keine Sorge, Papa Wutz repariert das bestimmt bald!
+                </p>
+
+                <a href="index.html" class="cta-btn big-blue" style="text-decoration: none; display: inline-block;">
+                    Zurück zur Startseite
+                </a>
+
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <p>Inoffizielle Wutz-Welt — Fan-Seite (2026)</p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
